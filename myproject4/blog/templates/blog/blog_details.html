@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#2 Template</title>
+</head>
+<body>
+    <h1> Blog filter page</h1>
+    <p><b>Title(Normal): {{post.title}}</b></p>
+    <p><b>Title(uppercase): {{post.title | upper}}</b></p>
+    <p><b>Title(lowercase): {{post.title | lower}}</b></p>
+    <p><b>Title(firstlettercapital): {{post.title | capfirst}}</b></p>
+    <p><b>Title(truncatechars): {{post.title | truncatechars:15}}</b></p>
+    <p><b>Title(truncatechars): {{post.title | truncatewords:2}}</b></p>
+    <p><b>Title(linebreaks): {{post.title | linebreaks}}</b></p>
+<hr>
+{% comment  %} Number filter addition operation{% endcomment %}
+<p><b>Price(+5) : {{post.price | add:5}}</b></P>
+{% comment  %} Number filter division operation{% endcomment %}
+{%if post.number|divisibleby:2%}
+{{post.number}} is Even
+{%else%}
+{{post.number}} is Odd
+{% endif %}
+
+<hr>
+{% comment  %} List Filters{% endcomment %}
+<p>First tag: {{post.tags|first}}
+<p>Last tag: {{post.tags|last}}
+<p>Length of tag: {{post.tags|length }}
+<p>Slice first 2: {{post.tags|slice:":2" }}
+<p>Join: {{post.tags|join:", " }}
+
+<hr>
+
+</body> 
+</html>
