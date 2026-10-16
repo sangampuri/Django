@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}My Project{% endblock %}
+    </title>
+    {%load static %}
+    <link rel ="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer>
+        {% block footer %}
+        <p>&copy; 2026 My Project. All rights reserved.</p>
+        {% endblock %}
+        <script src="{% static 'scripts/alert.js' %}"></script>
+    </footer>
+</body>
+</html>
