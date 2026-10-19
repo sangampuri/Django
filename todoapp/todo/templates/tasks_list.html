@@ -10,21 +10,23 @@
         <h1>Todo app</h1>
         <table border="1">
             <thead >
-                <td >Name</td>
+                <td >Title</td>
                 <td>Description</td>
-                <td>status</td>
+                <td>Is Completed</td>
                 <td>Action</td>
             </thead>
             <tbody>
+                {% for task in tasks %}
                 <tr>
-                    <td>Task 1</td>
-                    <td>Description 1</td>
-                    <td>Pending</td>
+                    <td>{{task.title}}</td>
+                    <td>{{task.description}}</td>
+                    <td>{{task.is_completed|yesno:"Completed,Pending"}}</td>
                     <td>
-                        <button>Edit</button>
+                        <a href="{% url 'edit_task' task.id %}">Edit</a>
                         <button>Delete</button>
                     </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
