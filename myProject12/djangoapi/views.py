@@ -86,4 +86,8 @@ def update_student(request, student_id):
     return Response(serializer.errors, status=400)
 
 
-    
+@api_view(['DELETE'])
+def delete_student(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+    student.delete()
+    return Response(status=204)
