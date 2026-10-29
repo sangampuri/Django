@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Student
 from .serializers import StudentSerializer
-
+from django.shortcuts import get_object_or_404
 
 # @api_view(['GET'])
 # def hello_api(request):
@@ -72,3 +72,18 @@ def hello_api(request):
     return Response(serializer.errors, status=400)
 
 
+@api_view(['PUT'])
+def update_student(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+    serializer = StudentSerializer(
+    student,
+    data=request.data
+)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+
+    return Response(serializer.errors, status=400)
+
+
+    
